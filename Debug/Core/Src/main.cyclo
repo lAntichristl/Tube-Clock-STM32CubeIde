@@ -1,0 +1,13 @@
+../Core/Src/Clock.cpp:11:6:clockStart	3
+../Core/Src/Clock.cpp:36:6:clockControl	20
+../Core/Src/Clock.cpp:127:6:dateChoose	7
+../Core/Src/Clock.cpp:170:6:timeChoose	7
+../Core/Src/Clock.cpp:212:6:resetTube	1
+../Core/Src/Clock.cpp:224:6:dataSend	5
+../Core/Src/Menu.cpp:11:6:screenChange	3
+../Core/Src/Menu.cpp:25:6:settings	55
+../Core/Src/main.c:75:5:main	16
+../Core/Src/main.c:209:6:SystemClock_Config	4
+../Core/Src/main.c:253:6:HAL_TIM_PeriodElapsedCallback	3
+../Core/Src/main.c:272:6:Error_Handler	1
+../Core/Src/main.c:291:6:assert_failed	1
