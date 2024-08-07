@@ -152,15 +152,21 @@ int main(void)
 		  if(BUTTON_GetAction(BUTTON_LEFT) == BUTTON_LONG_PRESS)
 		  {
 			  interruptSource = BUTTON_LEFT_Pin;
-			  settings();
-			  HAL_Delay(300);
+			  if (isSettingsOn)
+			  {
+				  settings();
+				  HAL_Delay(300);
+			  }
 		  }
 
 		  if(BUTTON_GetAction(BUTTON_LEFT) == BUTTON_VERY_LONG_PRESS)
 		  {
 			  interruptSource = BUTTON_LEFT_Pin;
-			  settings();
-			  HAL_Delay(100);
+			  if (isSettingsOn)
+			  {
+				  settings();
+				  HAL_Delay(100);
+			  }
 		  }
 
 		  if (BUTTON_GetAction(BUTTON_MIDDLE) == BUTTON_SHORT_PRESS)
@@ -183,15 +189,21 @@ int main(void)
 		  if(BUTTON_GetAction(BUTTON_RIGHT) == BUTTON_LONG_PRESS)
 		  {
 			  interruptSource = BUTTON_RIGHT_Pin;
-			  settings();
-			  HAL_Delay(80);
+			  if (isSettingsOn)
+			  {
+				  settings();
+				  HAL_Delay(300);
+			  }
 		  }
 
 		  if(BUTTON_GetAction(BUTTON_RIGHT) == BUTTON_VERY_LONG_PRESS)
 		  {
 			  interruptSource = BUTTON_RIGHT_Pin;
-			  settings();
-			  HAL_Delay(40);
+			  if (isSettingsOn)
+			  {
+				  settings();
+				  HAL_Delay(100);
+			  }
 		  }
 	  }
 	  BUTTON_ResetActions();
@@ -215,11 +227,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
@@ -242,7 +254,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
